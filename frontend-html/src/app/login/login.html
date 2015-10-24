@@ -1,0 +1,50 @@
+<div class="login-page">
+
+  <h1>Pietryna</h1>
+
+  <h2>HP Developer Day 2015</h2>
+
+  <form class="col-md-12" ng-submit="vm.performLogin()">
+
+    <div class="row">
+
+      <div class="col-sm-9">
+        <div class="form-group">
+          <input type="text" placeholder="Enter your e-mail to log in"
+                 ng-model="vm.email" ng-focus="vm.hideLoginWarning()"
+                 class="form-control" ng-disabled="vm.login.inProgress">
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary button-glyphicon"
+                    ng-disabled="vm.login.inProgress">
+                <span aria-hidden="true" ng-show="vm.login.inProgress"
+                  class="glyphicon glyphicon-refresh spinning no-animation"></span>
+                Sign in
+            </button>
+
+
+            
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row" ng-if="vm.invalidCredentials.visible">
+      <div class="col-md-12">
+        <h5>{{ vm.invalidCredentials.message }}</h5>
+      </div>
+    </div>
+
+  </form>
+    <button ng-click="vm.goToReg()" class="btn btn-primary button-glyphicon">
+        <span aria-hidden="true"
+              class="glyphicon glyphicon-refresh spinning no-animation"></span>
+        Register
+    </button>
+
+
+</div>
+

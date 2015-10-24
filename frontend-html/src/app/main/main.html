@@ -1,0 +1,60 @@
+<navbar fluid="true"></navbar>
+
+<main>
+  <div class="map-bar">
+    <map center="{{vm.map.lat}}, {{vm.map.lng}}" zoom="{{vm.map.zoom}}" disable-default-u-i="true" zoom-control="true" zoom-control-options="{style:'SMALL',position:'TOP_LEFT'}" class="mainMap">
+      <marker position="51.7525557, 19.4613142"></marker>
+    </map>
+  </div>
+
+  <div class="map-bar-search container-fluid">
+    <div class="row">
+      <div class="col-xs-8 col-sm-6 col-lg-5 col-sm-offset-3">
+        <input type="text" class="form-control" placeholder="Find a place in Łódź...">
+      </div>
+      <div class="col-xs-4 col-sm-3">
+        <button type="submit" class="btn btn-primary"><span aria-hidden="true" class="glyphicon glyphicon-plus button-glyphicon"></span>Add place</button>
+      </div>
+    </div>
+  </div>
+
+  <container fluid="true">
+
+    <h2 class="top-rated-header" ng-if="vm.topRatedPlaces.length > 0">TOP RATED</h2>
+    <div class="top-rated-grid">
+      <div class="row" ng-repeat="group in vm.topRatedPlaces">
+        <div class="col-md-3" ng-repeat="place in group">
+          <place model="place" class="bg-{{vm.getIndex($parent.$index, $index)}}">
+          </place>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="all-places-header">ALL PLACES</h2>
+    <h4 class="all-places-no-data" ng-if="vm.places.length === 0">Can't find any place</h4>
+    <div class="all-places-list list-group container">
+        <a class="list-group-item" ng-repeat="place in vm.places" href="#/details/{{place.id}}">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="place-image"><span class="glyphicon glyphicon-camera"></span></div>
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h4 class="list-group-item-heading" ng-bind="place.name"></h4>
+                            <p class="list-group-item-text" ng-bind="place.address" ng-if="place.address"></p>
+                        </div>
+                        <div class="col-xs-4">
+                            <star-rating ng-model="place.rate" readonly="false"></star-rating>
+                            <p class="list-group-item-text text-right" ng-bind="place.phone" ng-if="place.phone"></p>
+                            <p class="list-group-item-text text-right" ng-bind="place.email" ng-if="place.email"></p>
+                        </div>
+                    </div>
+                    <br>
+                    <p class="list-group-item-text" ng-bind="place.description" ng-if="place.description"></p>
+                </div>
+            </div>
+        </a>
+    </div>
+  </container>
+</main>
