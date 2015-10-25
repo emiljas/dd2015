@@ -44,6 +44,12 @@
                                 <p class="list-group-item-text" ng-bind="place.address" ng-if="place.address"></p>
                             </div>
                             <div class="col-xs-4">
+
+                                <div ng-init="y = 2">
+                                    <uib-rating ng-model="y">
+                                    </uib-rating>
+                                </div>
+
                             <p class="list-group-item-text text-right" ng-bind="place.phone" ng-if="place.phone"></p>
                             <p class="list-group-item-text text-right" ng-bind="place.email" ng-if="place.email"></p>
                         </div>
